@@ -6,10 +6,10 @@
 </head>
 <body>
 	<h2>Hello</h2>
-	<div th:each="User:${UserList}" th:object=${User}>
+	<div th:each="UserForm:${UserList}" th:object=${UserForm}>
 
-		<div>[[${User.id}]] - [[${User.name}]] - [[${User.password}]] -
-			[[${User.authority}]]</div>
+		<div>[[${UserForm.id}]] - [[${UserForm.name}]] - [[${UserForm.password}]] -
+			[[${UserForm.authority}]]</div>
 
 	</div>
 

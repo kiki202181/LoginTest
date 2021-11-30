@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import login.app.entity.User;
+import login.app.entity.UserForm;
 import login.app.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
@@ -18,11 +18,11 @@ public class LoginController {
 
 	@Autowired
 	UserRepository userRepository;
-	List<User> UserList;
+	List<UserForm> UserList;
 
 	@GetMapping("/")
 	public String login(Model model) {
-		model.addAttribute("User", new User());
+		model.addAttribute("UserForm", new UserForm());
 		return "testLogin";
 	}
 	
@@ -30,8 +30,8 @@ public class LoginController {
 	public String edit(@RequestParam(value = "name", required = false, defaultValue = "%")
 	String name, Model model) {
 		System.out.println(name);
-		UserList = userRepository.findByname(name);
-		model.addAttribute("UserList", UserList);
+//		UserList = userRepository.findByname(name);
+//		model.addAttribute("UserList", UserList);
 		
 //		UserList = userRepository.findAllUser();
 //		model.addAttribute("UserList", UserList);
