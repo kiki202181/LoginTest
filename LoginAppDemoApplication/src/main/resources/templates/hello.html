@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>hello page</title>
+</head>
+<body>
+	<h2>Hello</h2>
+	<div th:each="User:${UserList}" th:object=${User}>
+
+		<div>[[${User.id}]] - [[${User.name}]] - [[${User.password}]] -
+			[[${User.authority}]]</div>
+
+	</div>
+
+</body>
+</html>
