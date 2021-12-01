@@ -17,6 +17,6 @@ public interface UserRepository extends JpaRepository<UserForm, Long> {
 	@Transactional
 	@Modifying
 	@Query(value = "SELECT * FROM user_tb WHERE name=?1", nativeQuery = true)
-	UserForm findByname(String name);
+	List<UserForm> findByname(String name);
 
 }

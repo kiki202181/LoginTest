@@ -19,7 +19,7 @@ import lombok.Setter;
 public class UserForm {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+//	private Long id;
 	private String name;
 	private String password;
 	private GrantedAuthority authority;

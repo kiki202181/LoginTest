@@ -24,17 +24,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-		UserForm userForm = userRepository.findByname(username);
+		List<UserForm> userList = userRepository.findByname(username);
+		UserForm userForm = userList.get(0);
 
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
 		GrantedAuthority authority = userForm.getAuthority();
 		grantList.add(authority);
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		
 		String password = encoder.encode(userForm.getPassword());
-		
-		UserDetails userDetails = (UserDetails)new User(username, password,grantList);
+
+
+		UserDetails userDetails = (UserDetails) new User(username, password, grantList);
 		return userDetails;
 	}
 
