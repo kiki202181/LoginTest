@@ -27,13 +27,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		List<UserForm> userList = userRepository.findByname(username);
 		UserForm userForm = userList.get(0);
 
+		String dbUserName = userForm.getName();
+
+		if (dbUserName == null) {
+			throw new UsernameNotFoundException("User not authorized.");
+		}
+
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
 		GrantedAuthority authority = userForm.getAuthority();
 		grantList.add(authority);
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String password = encoder.encode(userForm.getPassword());
-
 
 		UserDetails userDetails = (UserDetails) new User(username, password, grantList);
 		return userDetails;
