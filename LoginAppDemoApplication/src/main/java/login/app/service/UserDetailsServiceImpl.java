@@ -27,12 +27,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		List<UserForm> userList = userRepository.findByname(username);
 		UserForm userForm = userList.get(0);
 
+		if (null == userList || userList.isEmpty() ) {
+            throw new UsernameNotFoundException("Username not found");
+        }
+		
 		String dbUserName = userForm.getName();
 
 		if (dbUserName == null) {
 			throw new UsernameNotFoundException("User not authorized.");
 		}
-
+		
 		List<GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
 		GrantedAuthority authority = userForm.getAuthority();
 		grantList.add(authority);
