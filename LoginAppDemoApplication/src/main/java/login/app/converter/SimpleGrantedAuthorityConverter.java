@@ -10,7 +10,7 @@ public class SimpleGrantedAuthorityConverter implements AttributeConverter<Simpl
 
 	@Override
 	public String convertToDatabaseColumn(SimpleGrantedAuthority authority) {
-//データベース列に変換(Entity→DB)
+		//データベース列に変換(Entity→DB)
 
 		return null;
 
@@ -19,7 +19,7 @@ public class SimpleGrantedAuthorityConverter implements AttributeConverter<Simpl
 	@Override
 	public SimpleGrantedAuthority convertToEntityAttribute(String dbData) {
 		// エンティティ属性に変換(Entity←DB)
-
+		
 		return null;
 	}
 
