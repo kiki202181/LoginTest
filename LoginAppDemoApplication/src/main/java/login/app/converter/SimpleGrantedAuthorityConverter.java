@@ -26,10 +26,9 @@ public class SimpleGrantedAuthorityConverter implements AttributeConverter<Simpl
 	public SimpleGrantedAuthority convertToEntityAttribute(String dbData) {
 		// エンティティ属性に変換(Entity←DB)
 
-		System.out.println("dbData:" + dbData);
+//		System.out.println("dbData:" + dbData);
 
 		if (dbData == null) {
-			System.out.println("if文null:" + dbData);
 			SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
 			return authority;
 		}
