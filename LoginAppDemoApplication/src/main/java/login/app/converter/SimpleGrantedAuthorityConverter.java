@@ -10,17 +10,33 @@ public class SimpleGrantedAuthorityConverter implements AttributeConverter<Simpl
 
 	@Override
 	public String convertToDatabaseColumn(SimpleGrantedAuthority authority) {
-		//データベース列に変換(Entity→DB)
+		// データベース列に変換(Entity→DB)
 
-		return null;
+		if (authority == null) {
+			return "USER";
+		}
+
+		String dbData = authority.toString();
+
+		return dbData;
 
 	}
 
 	@Override
 	public SimpleGrantedAuthority convertToEntityAttribute(String dbData) {
 		// エンティティ属性に変換(Entity←DB)
-		
-		return null;
+
+		System.out.println("dbData:" + dbData);
+
+		if (dbData == null) {
+			System.out.println("if文null:" + dbData);
+			SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
+			return authority;
+		}
+
+		SimpleGrantedAuthority authority = new SimpleGrantedAuthority(dbData);
+
+		return authority;
 	}
 
 }

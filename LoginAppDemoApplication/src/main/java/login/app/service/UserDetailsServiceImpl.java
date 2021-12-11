@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -40,9 +39,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		}
 				
 		Collection <GrantedAuthority> grantList = new ArrayList<GrantedAuthority>();
-		GrantedAuthority authority = new SimpleGrantedAuthority(userForm.getAuthority());
+		
+		
+//		GrantedAuthority authority = new SimpleGrantedAuthority(userForm.getAuthority());
 
-		grantList.add(authority);
+		grantList.add(userForm.getAuthority());
 
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String password = encoder.encode(userForm.getPassword());
